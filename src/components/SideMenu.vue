@@ -1,7 +1,8 @@
 <template>
   <div class="sideMenu">
-    <div :class='(left)?"left" : "right"'>
+    <div :class='`${position} ${colorClass} ${length}`'>
       <router-link tag="h1" to="/"  class="header">ü</router-link>
+      <div class="space"></div>
       <router-link tag="h2" to="/contact"  class="header">CONTACT</router-link>
       <router-link tag="h2" to="/about"  class="header">ABOUT</router-link>
     </div>
@@ -13,7 +14,9 @@ export default {
   name: 'SideMenu',
   props: {
     //lado en el que va a aparecer el menu
-    left: Boolean
+    position: String,
+    colorClass: String,
+    length:String
   }
 }
 </script>
@@ -22,8 +25,18 @@ export default {
 <style scoped lang="scss">
 h1{
   margin :0;
-  margin-bottom: 3vw;
+  margin-bottom: 3%;
   cursor: pointer;
+}
+.space{
+  display:none;
+}
+.long{
+  .space{
+    display:inline-block;
+    width:2px;
+    height:30vh;
+  }
 }
 .sideMenu{
   text-align: center;
@@ -43,7 +56,6 @@ h2{
     top:2vw;
     right:6vw;
     margin: 0;
-    color: var(--rojo);
     
 }
 .left{
@@ -52,10 +64,21 @@ h2{
     top:2vw;
     left:6vw;
     margin: 0;
-    color: var(--rojo);
     h2{
       transform: scale(-1,-1);
     }
+}
+.cremita{
+color: var(--cremita);
+  .space{
+    background:var(--cremita);
+  }
+}
+.rojo{
+  color: var(--rojo);
+  .space{
+    background:var(--cremita);
+  }
 }
 
 </style>

@@ -4,6 +4,7 @@ import Home from '../views/Home.vue'
 import Work from '../views/Work.vue'
 
 
+
 Vue.use(VueRouter)
 
   const routes = [
@@ -24,6 +25,11 @@ Vue.use(VueRouter)
     path: '/work',
     name: 'Work',
     component: Work
+  },
+  {
+    path: '/contact',
+    name: 'Contact',
+    component: () => import('../views/Contact.vue')
   }
 ]
 

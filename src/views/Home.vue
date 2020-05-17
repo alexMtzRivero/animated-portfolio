@@ -2,9 +2,9 @@
   <div class="home">
     <div class="interact">
       <div class="container">
-        <router-link tag="h1" to="/About"  class="header">About.</router-link>
+        <router-link tag="h1" to="/about"  class="header">About.</router-link>
         <router-link tag="h1" to="/work"  class="header">Work.</router-link>
-        <router-link tag="h1" to="/"  class="header">Contact.</router-link>
+        <router-link tag="h1" to="/contact"  class="header">Contact.</router-link>
       </div>
      
     </div>

@@ -1,14 +1,17 @@
 <template>
   <div class="work">
     <div class="interact">
-      <SideMenu :left="true"/>
+      <SideMenu position="left" colorClass="rojo"/>
       <h2>Brandng.</h2>
     </div>
     <div class="content">
-      <div class="image"></div>
+      <div class="image">
+        <img ref="img2" :src="project[index2].path" alt="" >
+        <img ref="img1" :src="project[index].path" alt=""  @click="nextImage()">
+      </div>
       <div class="hidden">
         <div class="column"></div>
-        <h1>Titulo Mamalon</h1>
+        <h1>{{project[index].header}}</h1>
       </div>
     </div>
   </div>
@@ -23,6 +26,37 @@ export default {
   },
   props: {
     msg: String
+  },
+  data(){
+    return {
+      project:[
+        {
+          path: require("@/assets/images/tolina.png"),
+          header: "Doña Tolina"
+        },
+         {
+          path: require("@/assets/images/olea.png"),
+          header: "Olea"
+        },
+        
+      ],
+      index:0,
+      index2:1,
+    }
+  },
+  methods:{
+    nextImage(){
+      var img1 = this.$refs.img1;
+      img1.classList.add('changing');
+        setTimeout(()=>{
+        this.index+=1;
+        this.index%= this.project.length;
+        this.index2+=1;
+        this.index2%= this.project.length;
+        img1.classList.remove('changing');
+      }, 500); // the same time as transition animation at css.
+      
+    }
   }
 }
 </script>
@@ -35,18 +69,28 @@ export default {
   display:flex;
 }
 .image{
-  width: 100%;
+  width: inherit;
   height: 100%;
   background: var(--azul);
+  transition: opacity .5s;
 }
-.hidden{
-  
+.changing{
+  opacity:0;
+  transition: opacity .5s;
+}
+img{
+  width: inherit;
+  height:100%;
+  right:0;
+  position: absolute;
+}
+.hidden{ 
   opacity: 0;
-  width: 58%;
+  width: 38%;
   height: 100%;
   position: absolute;;
   top:0;
-  background: var(--azul);
+  right:0;
   transition: opacity .5s;
 }
 h1{
@@ -63,7 +107,7 @@ h1{
  opacity: 1;
 }
 .column{
-  width: 21%;
+  width: 12vw;
   margin-left:auto;
   height: 100%;
   background: var(--rojo);
@@ -81,7 +125,7 @@ h2{
   font-size: 5vw;
   }
 .content{
-  width: 58%;
+  width: 58vw;
   height: 100%;
 }
 </style>
