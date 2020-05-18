@@ -31,6 +31,11 @@ h1{
 .space{
   display:none;
 }
+.short{
+  h2{
+    display: none;
+  }
+}
 .long{
   .space{
     display:inline-block;

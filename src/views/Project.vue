@@ -1,49 +1,42 @@
 <template>
-  <div class="work">
+  <div class="project">
     <div class="interact">
-      <SideMenu position="left" colorClass="rojo"/>
-      <h2>Brandng.</h2>
+      <SideMenu position="left" :colorClass="sideMenuColor" length="short"/>
+      <h2>{{ $route.params.project}}</h2>
     </div>
     <div class="content">
       <div class="image">
         <img ref="img2" :src="project[index2].path" alt="" >
         <img ref="img1" :src="project[index].path" alt=""  @click="nextImage()">
-      </div>
-      <div class="hidden">
-        <div class="column"></div>
-        <h1 @click="goto()">{{project[index].header}}</h1>
-      </div>
+      </div>  
     </div>
+    <div class="circle"></div>
   </div>
 </template>
 
 <script>
 import SideMenu from "@/components/SideMenu.vue"
 export default {
-  name: 'Work',
+  name: 'Project',
   components:{
     SideMenu
   },
   props: {
-    msg: String
+    sideMenuColor:String,
+    description:String,
+    images:Array,
+    colors:Object,
   },
   data(){
     return {
       project:[
         {
           path: require("@/assets/images/tolina.png"),
-          header: "Doña Tolina",
-          sideMenuColor:"rojo",
-          description:"",
-          images:"",
-          colors:{
-            header:"#3333"
-          },
+          header: "Doña Tolina"
         },
          {
           path: require("@/assets/images/olea.png"),
-          header: "Olea",
-          sideMenuColor:"cremita",
+          header: "Olea"
         },
         
       ],
@@ -63,18 +56,6 @@ export default {
         img1.classList.remove('changing');
       }, 500); // the same time as transition animation at css.
       
-    },
-    goto(){
-      this.$router.push({
-        name: 'Project',
-        params : {  
-            project:this.project[this.index].header,
-            sideMenuColor : this.project[this.index].sideMenuColor,
-            description : this.project[this.index].description,
-            images : this.project[this.index].images,
-            colors : this.project[this.index].colors
-          }
-      });
     }
   }
 }
@@ -82,7 +63,7 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
-.work{
+.project{
   width: 100%;
   height: 100%;
   display:flex;
@@ -103,34 +84,7 @@ img{
   right:0;
   position: absolute;
 }
-.hidden{ 
-  opacity: 0;
-  width: 38%;
-  height: 100%;
-  position: absolute;;
-  top:0;
-  right:0;
-  transition: opacity .5s;
-}
-h1{
-  position: absolute;
-  text-align: left;
-  right:4vw;
-  bottom:4vw;
-  color: var(--cremita);
-  font-size: 7vw;
-  margin: 0;
-  width: min-content;
-}
-.hidden:hover{
- opacity: 1;
-}
-.column{
-  width: 12vw;
-  margin-left:auto;
-  height: 100%;
-  background: var(--rojo);
-}
+
 .interact{
   width: 42%;
   height: 100%;
@@ -146,5 +100,14 @@ h2{
 .content{
   width: 58vw;
   height: 100%;
+}
+.circle{
+  position:absolute;
+  background: var(--rojo);
+  width: 7vw;
+  height:7vw;
+  border-radius: 50%;
+  left: 38.5vw;
+  top: 50%;
 }
 </style>
