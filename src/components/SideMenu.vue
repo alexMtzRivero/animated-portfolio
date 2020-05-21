@@ -3,8 +3,9 @@
     <div :class='`${position} ${colorClass} ${length}`'>
       <router-link tag="h1" to="/"  class="header">ü</router-link>
       <div class="space"></div>
-      <router-link tag="h2" to="/contact"  class="header">CONTACT</router-link>
-      <router-link tag="h2" to="/about"  class="header">ABOUT</router-link>
+      <router-link v-show='$route.path != "/contact"' tag="h2" to="/contact"  class="header">CONTACT</router-link>
+      <router-link v-show='$route.path != "/about"' tag="h2" to="/about"  class="header">ABOUT</router-link>
+      <router-link v-show='$route.path != "/work"' tag="h2" to="/work"  class="header">WORK</router-link>
     </div>
   </div>
 </template>

@@ -6,7 +6,6 @@
         <router-link tag="h1" to="/work"  class="header">Work.</router-link>
         <router-link tag="h1" to="/contact"  class="header">Contact.</router-link>
       </div>
-     
     </div>
     <div class="content">
       <h1 class="logo-right">ü</h1>
@@ -20,8 +19,11 @@
 
 export default {
   name: 'Home',
-  components: {
-    
+  
+mounted(){
+    if(!this.$root.shown){
+      this.$router.push('/hello')
+    }
   }
 }
 </script>
@@ -60,4 +62,23 @@ h1{
   width: 58%;
   height: 100%;
 }
+.Hello-Home-enter{
+  .container{
+    bottom:100vw;
+  }
+  .logo-right{
+    opacity: 0;
+  }
+}
+.Hello-Home-enter-active {
+  .container{
+    transition: bottom var(--anim-st) ease;
+  }
+  .logo-right{
+    transition: opacity var(--anim-st) ease;
+  }
+ 
+  transition: all var(--anim-st) ease;
+}
+
 </style>

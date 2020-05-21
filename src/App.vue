@@ -1,13 +1,28 @@
 <template>
-  <div id="app">
-    <!-- <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div> -->
+  <div id="app"> 
+    <transition :name="transitionName" > 
     <router-view/>
+    </transition>
   </div>
 </template>
-
+<script>
+export default {
+  data () {
+    return {
+      transitionName: ''
+    }
+  },
+    mounted(){
+        this.$root.shown = false
+    },
+    watch: {
+    '$route'(to, from) {
+        this.transitionName = `${from.name}-${to.name}`
+        console.log(this.transitionName,"form wathcer");
+    }
+    }
+}
+</script>
 <style lang="scss">
 :root{
   --rojo: #E7582C;
@@ -15,6 +30,8 @@
   --azul-obscuro:#053F4B;
   --azul: #004E75;
   --cremita:#DCD6CF;
+  --anim-begin : .5s;
+  --anim-st : .5s
 }
 #app {
   font-family: Elephant;
@@ -22,7 +39,8 @@
   height: 100vh;
   text-align: center;
   color: #2c3e50;
-  background: #DA9CA6;
+  background: var(--azul-obscuro);
+  overflow: hidden;
 }
 p{
   font-family: Perpetua;

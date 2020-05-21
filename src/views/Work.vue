@@ -10,8 +10,8 @@
         <img ref="img1" :src="project[index].path" alt=""  @click="nextImage()">
       </div>
       <div class="hidden">
-        <div class="column"></div>
-        <h1 @click="goto()">{{project[index].header}}</h1>
+        <div class="column" :style="project[index].colors.background"></div>
+        <h1 :style="project[index].colors.header" @click="goto()">{{project[index].header}}</h1>
       </div>
     </div>
   </div>
@@ -33,17 +33,32 @@ export default {
         {
           path: require("@/assets/images/tolina.png"),
           header: "Doña Tolina",
-          sideMenuColor:"rojo",
-          description:"",
-          images:"",
+          description:"Doña Tolina es una marca de mermeladas, salsas y dip inspirada en el folklor mexicano, más específicamente en la talavera, los albures y piropos clásicos de la cultura mexicana.",
+          images:[require("@/assets/images/tolina/1.png"),
+                  require("@/assets/images/tolina/2.png"),
+                  require("@/assets/images/tolina/3.png")],
           colors:{
-            header:"#3333"
+            header:"color: var(--cremita)",
+            headerOpen:"color: var(--rojo)",
+            background:"background: var(--rojo)",
+            circle:" color : var(--cremita); background: var(--rosa)",
+            menu:"cremita",
+            box:"color:var(--rojo); background:var(--cremita)"
           },
         },
          {
           path: require("@/assets/images/olea.png"),
           header: "Olea",
-          sideMenuColor:"cremita",
+
+
+          colors:{
+            header:"color: var(--azul)",
+            headerOpen:"color: var(--rojo)",
+            background:"background: var(--cremita)",
+            circle:" color : var(--cremita); background: var(--rosa)",
+            menu:"cremita",
+            box:"color:var(--rojo); background:var(--cremita)"
+          }
         },
         
       ],
@@ -116,7 +131,7 @@ h1{
   position: absolute;
   text-align: left;
   right:4vw;
-  bottom:4vw;
+  top: 63vh;
   color: var(--cremita);
   font-size: 7vw;
   margin: 0;
@@ -146,5 +161,49 @@ h2{
 .content{
   width: 58vw;
   height: 100%;
+}
+
+
+
+.Work-Project-leave-active{
+   transition: all calc(var(--anim-st)*2) ease;
+   .column{
+    transition: width var(--anim-st) ease; 
+   }
+   .hidden{
+     opacity: 1;
+     transition: width var(--anim-st) ease, 
+                 right var(--anim-st) var(--anim-st) ease;
+   }
+   h1{
+       transition: 
+                  right var(--anim-st) ease,
+                  top var(--anim-st) ease,
+                  color var(--anim-st) ease,
+                  font-size var(--anim-st) ease,
+                  margin var(--anim-st) ease,
+                  width var(--anim-st) ease;
+    }
+}
+.Work-Project-leave-to{
+   margin-top: 1vh;
+   .column{
+     width:100%
+   }
+   .hidden{
+     opacity: 1;
+     width: 100%;
+     right:58vw;
+   }
+   h1{
+        text-align: center;
+        // right: 64.5vw;
+        top: 78vh;
+        color: var(--cremita);
+        font-size: 5vw;
+        margin: 0;
+        width: 30vw;
+        white-space: nowrap;
+    }
 }
 </style>

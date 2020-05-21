@@ -3,6 +3,7 @@ import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
 import Work from '../views/Work.vue'
 import Project from '../views/Project.vue'
+import Intro from '../views/Intro.vue'
 
 
 
@@ -28,11 +29,15 @@ Vue.use(VueRouter)
     component: Work
   },
   {
+    path: '/hello',
+    name: 'Hello',
+    component: Intro
+  },
+  {
     path: '/work/:project',
     name: 'Project',
     component: Project,
     props : (route) => ({
-      sideMenuColor : route.params.sideMenuColor,
       description : route.params.description,
       images : route.params.images,
       colors : route.params.colors,
