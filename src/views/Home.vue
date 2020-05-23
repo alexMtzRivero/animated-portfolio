@@ -36,6 +36,7 @@ mounted(){
   height: 100%;
   display:flex;
   background: var(--azul-obscuro);
+  clip-path: circle(130% at 92% 12%);
 }
 h1{
   cursor: pointer;
@@ -71,7 +72,7 @@ h1{
   .container{
     transition: bottom var(--anim-st) ease;
   }
-  
+  clip-path: none;
   transition: all var(--anim-st) ease;
 }
 
@@ -98,5 +99,24 @@ h1{
   h1{
     transition: margin-right var(--anim-st)  ease-out;
   }
+}
+.Home-Contact-leave-active{
+  transition: all var(--anim-st) ease;
+ 
+}
+.About-Home-enter{
+
+    clip-path: circle(0% at 92% 12%);
+}
+.About-Home-enter-active{
+    transition: all var(--anim-st) ease;
+}
+
+.Contact-Home-enter{
+   // background-color: var(--azul-obscuro) ;
+    clip-path: circle(0% at 92% 12%);
+}
+.Contact-Home-enter-active{
+    transition: all var(--anim-st) ease;
 }
 </style>

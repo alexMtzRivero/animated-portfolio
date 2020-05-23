@@ -1,6 +1,6 @@
 <template>
   <div class="sideMenu">
-    <div :class='`${position} ${colorClass} ${length}`'>
+    <div :class='`${colorClass} ${length} ${position}`'>
       <router-link tag="h1" to="/"  class="header">ü</router-link>
       <div class="space"></div>
       <router-link v-show='$route.path != "/contact"' tag="h2" to="/contact"  class="header">CONTACT</router-link>
@@ -63,7 +63,7 @@ h2{
     top:2vw;
     right:6vw;
     margin: 0;
-    
+    clip-path: inset(0 0 0% 0%);
 }
 .left{
     font-size: 3vw;
@@ -102,24 +102,13 @@ color: var(--cremita);
 }
 
 
-.Work-WorkMenu-leave-active{
-  .left{
-   transition: left var(--anim-st) ease;
-  }
-  transition: all var(--anim-st) ease;
-}
-.Work-WorkMenu-leave-to{
-  .left{
-      left:-10vw;
-    }
-}
-
+.Work-WorkMenu-leave-to,
 .WorkMenu-Work-enter{
     .left{
       left:-10vw;
     }
 }
-
+.Work-WorkMenu-leave-active,
 .WorkMenu-Work-enter-active {
   .left{
    transition: left var(--anim-st) ease;
@@ -127,30 +116,45 @@ color: var(--cremita);
   transition: all var(--anim-st) ease;
 }
 
-.WorkMenu-Work-leave-to{
-    .right{
-      right :-10vw;
-    }
-  }
-.WorkMenu-Work-leave-active {
-  .right {
-   transition: right var(--anim-st) ease;
-  }
-  transition: all var(--anim-st) ease;
-}
-
-
+.WorkMenu-Work-leave-active ,
 .Work-WorkMenu-enter-active{
   .right{
    transition: right var(--anim-st) ease;
   }
   transition: all var(--anim-st) ease;
 }
+
+.WorkMenu-Work-leave-to,
 .Work-WorkMenu-enter{
   .right{
       right:-10vw;
     }
 }
+
+
+
+.Contact-About-leave-to,
+.Contact-About-enter,
+.About-Contact-leave-to,
+.About-WorkMenu-leave-to,
+.About-Contact-enter{
+   .right{
+   clip-path: inset(0 0 84% 0%);
+  }
+}
+
+.Contact-About-leave-active,
+.Contact-About-enter-active,
+.About-Contact-leave-active,
+.About-WorkMenu-leave-active,
+.About-Contact-enter-active{
+   transition: all var(--anim-st) ease;
+  .right{
+   transition: clip-path var(--anim-st) ease,
+               
+  }
+}
+
 
 
 

@@ -37,6 +37,7 @@ export default {
   position:absolute;
   top:0;
   left:0;
+  clip-path: inset(0 0 0% 0%);
 }
 h1{
   cursor: pointer;
@@ -68,6 +69,9 @@ h1{
   width: 58%;
   height: 100%;
 }
+
+/// transitions
+
 .Home-WorkMenu-enter{
   .container{
     margin-left: -50vw;
@@ -134,6 +138,26 @@ h1{
     margin-left: -50vw;
   }
 }
+.About-WorkMenu-enter-active{
+  transition: clip-path var(--anim-st) ease-in;
+}
+.About-WorkMenu-enter-to{
+  background: var(--azul-obscuro);
+}
+.About-WorkMenu-enter{
+  clip-path: inset(0 0 0% 100%);
+}
+
+.Contact-WorkMenu-enter-active{
+  transition: clip-path var(--anim-st) ease-in;
+}
+.Contact-WorkMenu-enter-to{
+  background: var(--azul-obscuro);
+}
+.Contact-WorkMenu-enter{
+  clip-path: inset(0 0 0% 100%);
+}
+
 
 
 </style>

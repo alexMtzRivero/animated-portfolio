@@ -32,6 +32,11 @@ export default {
   height:100%;
   background: var(--rosa);
   display: flex;
+  clip-path: circle(115% at 20% 30%);
+  position: absolute;
+  top: 0;
+  left: 0;
+  overflow: hidden;
 }
 .img-container{
   width:23vw;
@@ -58,7 +63,7 @@ h1{
 .square{
   margin-top:auto;
   width: 100%;
-  height:67vw;
+  height:67vh;
   background: var(--rojo);
   display: flex;
 }
@@ -80,6 +85,73 @@ p{
   border-radius: 50%;
   left: 6.5vw;
   top: 17%;
+}
+.About-Home-leave-active{
+    transition: all var(--anim-st) ease;
+}
+.Home-About-enter{
+    clip-path: circle(0% at 20% 30%);
+}
+
+.Home-About-enter-active{
+ transition: all var(--anim-st) ease,
+              clip-path var(--anim-st) ease;
+}
+
+.Contact-About-enter-active{
+  transition: all calc(var(--anim-st)*2) ease;
+  .square{
+   transition: height var(--anim-st) ease-in-out,
+  }
+  .img-container{
+    transition: left var(--anim-st)  ease-out,
+  }
+  .circle{
+    transition: all var(--anim-st) var(--anim-st) ease;
+  }
+  .container{
+     transition: height var(--anim-st) ease-out;
+  }
+  h1{
+   transition: opacity var(--anim-st) ease-out;
+  }
+}
+.Contact-About-enter{
+  .square{
+    height: 0vh;
+  }
+  .img-container{
+    left: -23vw;
+  }
+  .circle{
+     width: 0vw;
+     height: 0vw;
+  }
+  .container{
+    height: 100vh;
+  }
+  h1{
+    opacity: 0;
+  }
+}
+
+.About-Contact-leave-to{
+.circle{
+      width: 150vw;
+      height: 150vw;
+      border-radius: 50%;
+      left: -25vw;
+      top: -25vw;
+    }
+}
+.About-Contact-leave-active{
+  transition: all var(--anim-st) ease;
+  .circle{
+        transition: all var(--anim-st) ease;
+      }
+}
+.About-WorkMenu-leave-active{
+  transition: all var(--anim-st) ease;
 }
 
 </style>

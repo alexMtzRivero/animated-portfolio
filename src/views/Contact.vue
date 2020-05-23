@@ -22,8 +22,13 @@ export default {
 .contact{
   width: 100%;
   height:100%;
-  background: var(--rojo);
+  background-color: var(--rojo);
   display: flex;
+  position: absolute;
+  top: 0;
+  left: 0;
+  clip-path: circle(100% at 50% 0);
+  overflow: hidden;
 }
 .container{
   display: block;
@@ -33,6 +38,7 @@ export default {
   margin-left:10vw;
   background: var(--cremita);
   text-align: left;
+ 
 }
 h1{
   color: var(--rojo);
@@ -52,6 +58,60 @@ p{
   border-radius: 50%;
   right: 19.5vw;
   bottom: 45%;
+}
+
+/// transitions
+.Contact-Home-leave-active{
+    transition: all var(--anim-st) ease;
+}
+.Home-Contact-enter{
+    clip-path: circle(0% at 20% 80%);
+}
+
+.Home-Contact-enter-active{
+ transition: all var(--anim-st) ease,
+              clip-path var(--anim-st) ease;
+}
+
+
+.Contact-About-leave-active{
+    transition: all var(--anim-st) ease;
+      .circle{
+        transition: all var(--anim-st) ease;
+      }
+}
+.Contact-About-leave-to{
+    transition: all var(--anim-st) ease;
+    .circle{
+      width: 150vw;
+      height: 150vw;
+      border-radius: 50%;
+      right: -25vw;
+      bottom: -25vw;
+    }
+}
+.About-Contact-enter-active{
+   transition: all var(--anim-st) ease;
+   .container{
+     transition: height var(--anim-st) ease;
+   }
+   .circle{
+        transition: all var(--anim-st) ease;
+      }
+}
+
+.About-Contact-enter{
+   .container{
+     height: 0%;
+   }
+   .circle{
+     width: 0vw;
+     height: 0vw;
+  }
+}
+.Contact-WorkMenu-leave-active,
+.Contact-About-leave-active{
+  transition: all var(--anim-st) ease;
 }
 
 </style>

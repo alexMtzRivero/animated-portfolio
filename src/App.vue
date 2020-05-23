@@ -13,6 +13,8 @@ export default {
       order:{
         "Home-WorkMenu":true,
         "WorkMenu-Home":true,
+        "Contact-About":true,
+        "About-Contact":true
       },
       separed : false
     }
@@ -37,7 +39,7 @@ export default {
   --azul: #004E75;
   --cremita:#DCD6CF;
   --anim-begin : .5s;
-  --anim-st : 1s
+  --anim-st : 10s
 }
 #app {
   font-family: Elephant;

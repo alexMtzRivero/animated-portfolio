@@ -130,6 +130,7 @@ export default {
   height: 100vh;
   display:flex;
   overflow: hidden;
+  clip-path: inset(0 0 0% 0%);
 }
 .image{
   width: inherit;
@@ -161,8 +162,9 @@ z-index:0;
   position: absolute;
   top:0;
   right:0;
-  z-index:2;
+  z-index:3;
   transition: opacity .5s;
+  overflow: hidden;
 }
 h1{
   position: absolute;
@@ -182,6 +184,7 @@ h1{
   margin-left:auto;
   height: 100%;
   background: var(--rojo);
+  z-index:3;
 }
 .interact{
   width: 42%;
@@ -265,7 +268,6 @@ h2{
     }
 }
 .Work-Project-leave-to{
-   margin-top: 1vh;
    .column{
      width:100%
    }
@@ -276,7 +278,7 @@ h2{
    }
    h1{
         text-align: center;
-        // right: 64.5vw;
+        right: 8vw;
         top: 78vh;
         color: var(--cremita);
         font-size: 5vw;
@@ -285,4 +287,5 @@ h2{
         white-space: nowrap;
     }
 }
+
 </style>

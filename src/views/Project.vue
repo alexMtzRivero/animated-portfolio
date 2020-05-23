@@ -81,9 +81,9 @@ img{
   right:0;
   top:0;
   position: absolute;
-  z-index: 1;
+  clip-path: inset(0 0 0 0);
 }
-  .img1{
+.img1{
 z-index:1;
 }
 .img2{
@@ -196,18 +196,22 @@ h2{
     top:0
   }
   img{
-    
     height:100%;
     top:0;
     right:0;
     position: absolute;
+    clip-path: inset(0 0 0 100%);
   }
 }
 //tiempos de animaciones
 .Work-Project-enter-active {
+  transition: all calc(var(--anim-st)*2) ease;
   .project{
     position: absolute;
     top:0
+  }
+   img{
+   transition: clip-path var(--anim-st) var(--anim-st) ease;
   }
   
 }
