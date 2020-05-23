@@ -8,18 +8,20 @@
       </div>
     </div>
     <div class="content">
-      <h1 class="logo-right">ü</h1>
+      <SideMenu class="sideMenu" position="right" colorClass="rojo" length="short"/>
     </div>
   </div>
 </template>
 
 <script>
 // @ is an alias to /src
-
+import SideMenu from "@/components/SideMenu.vue"
 
 export default {
   name: 'Home',
-  
+   components:{
+    SideMenu
+  },
 mounted(){
     if(!this.$root.shown){
       this.$router.push('/hello')
@@ -41,19 +43,17 @@ h1{
   font-size: 8vw;
   margin: 1vw 0vw 1vw 1vw;
   color:var(--rojo);
+  transition: color var(--anim-st);
+  &:hover{
+    color:var(--rosa);
+  }
 }
 .container{
   position: absolute;
   right:58vw;
   bottom:5vw;
 }
-.logo-right{
-  font-size: 8vw;
-  position: absolute;
-  top:3vw;
-  right:6vw;
-  margin: 0;
-}
+
 .interact{
   width: 42%;
   height: 100%;
@@ -66,19 +66,37 @@ h1{
   .container{
     bottom:100vw;
   }
-  .logo-right{
-    opacity: 0;
-  }
 }
 .Hello-Home-enter-active {
   .container{
     transition: bottom var(--anim-st) ease;
   }
-  .logo-right{
-    transition: opacity var(--anim-st) ease;
-  }
- 
+  
   transition: all var(--anim-st) ease;
 }
 
+.Home-WorkMenu-leave-to{
+ h1{
+   margin-right: 50vw;
+ }
+}
+.Home-WorkMenu-leave-active{
+  transition: all var(--anim-st) ease;
+  h1{
+  transition: margin-right var(--anim-st)  ease-in;
+ }
+
+}
+
+.WorkMenu-Home-enter{
+h1{
+   margin-right: 50vw;
+ }
+}
+.WorkMenu-Home-enter-active{
+  transition: all var(--anim-st) ease;
+  h1{
+    transition: margin-right var(--anim-st)  ease-out;
+  }
+}
 </style>

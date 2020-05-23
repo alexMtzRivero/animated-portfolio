@@ -2,6 +2,7 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
 import Work from '../views/Work.vue'
+import WorkMenu from '../views/WorkMenu.vue'
 import Project from '../views/Project.vue'
 import Intro from '../views/Intro.vue'
 
@@ -24,17 +25,22 @@ Vue.use(VueRouter)
     component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')
   },
   {
-    path: '/work',
-    name: 'Work',
-    component: Work
-  },
-  {
     path: '/hello',
     name: 'Hello',
     component: Intro
   },
   {
-    path: '/work/:project',
+    path: '/work',
+    name: 'WorkMenu',
+    component: WorkMenu,
+  },
+  {
+    path: '/work/:type',
+    name: 'Work',
+    component: Work,
+  },
+  {
+    path: '/work/:type/:project',
     name: 'Project',
     component: Project,
     props : (route) => ({

@@ -1,6 +1,6 @@
 <template>
   <div id="app"> 
-    <transition :name="transitionName" > 
+    <transition :name="transitionName" :mode="separed?'out-in':''" > 
     <router-view/>
     </transition>
   </div>
@@ -9,7 +9,12 @@
 export default {
   data () {
     return {
-      transitionName: ''
+      transitionName: '',
+      order:{
+        "Home-WorkMenu":true,
+        "WorkMenu-Home":true,
+      },
+      separed : false
     }
   },
     mounted(){
@@ -18,6 +23,7 @@ export default {
     watch: {
     '$route'(to, from) {
         this.transitionName = `${from.name}-${to.name}`
+        this.separed = (this.order[this.transitionName]!=null)
         console.log(this.transitionName,"form wathcer");
     }
     }
@@ -31,11 +37,11 @@ export default {
   --azul: #004E75;
   --cremita:#DCD6CF;
   --anim-begin : .5s;
-  --anim-st : .5s
+  --anim-st : 1s
 }
 #app {
   font-family: Elephant;
-  width: 100vw;
+ 
   height: 100vh;
   text-align: center;
   color: #2c3e50;

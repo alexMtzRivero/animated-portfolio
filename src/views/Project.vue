@@ -14,8 +14,8 @@
     </div>
     <div class="content">
       <div class="image">
-        <img ref="img2" :src="images[index2]" alt="" >
-        <img ref="img1" :src="images[index]" alt=""  @click="nextImage()">
+        <img class="img1" ref="img1" :src="images[index]" alt=""  @click="nextImage()">
+        <img class="img2" ref="img2" :src="images[index2]" alt="" >
       </div>  
     </div>
     
@@ -79,7 +79,15 @@ img{
   width: inherit;
   height:100%;
   right:0;
+  top:0;
   position: absolute;
+  z-index: 1;
+}
+  .img1{
+z-index:1;
+}
+.img2{
+z-index:0;
 }
 h3{
     position: absolute;
